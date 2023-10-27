@@ -84,7 +84,7 @@ function findLongestWord(str){
         if(str[i]==" "||str[i]==="."){
             //console.log(currentWord.length)
             //currentWord.length-=1;
-
+           
             //Need to think code for removing the space and punctuation in the string
 
             // for(let j=currentWord.length-1;j<currentWord.length;j++){
@@ -103,6 +103,28 @@ function findLongestWord(str){
 
 console.log(findLongestWord("The quick brown fox jumped over the lazy dogeeeeeee."));
 findLongestWordLength("What if we try a super-long word such as otorhinolaryngology");
+
+function longestWord(str){
+    let splittedString=str.split(' ');
+    let longestWord='';
+
+    for(let i=0;i<splittedString.length;i++){
+        let currentWord=splittedString[i];
+        if(currentWord.length>longestWord.length){
+            longestWord=currentWord;
+        }
+    }
+    //need a code to remove if there's a punctuation after the longest word
+    //this is the code for removing punctuation
+    if(longestWord.slice(-1)==="."||longestWord.slice(-1)==="?"
+    ||longestWord.slice(-1)===","){
+        let lastIndex=longestWord.length-1;
+        longestWord=longestWord.substring(0,lastIndex);
+    }
+    return longestWord;
+    
+}
+console.log(longestWord("What if we try a super-long word such as otorhinolaryngology,"));
 
 function largestOfFour(arr) {
     let newArray=[];
@@ -123,3 +145,61 @@ function largestOfFour(arr) {
   
   largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
   largestOfFour([[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10]]); //should return [25, 48, 21, -3]
+
+  function confirmEnding(str, target) {
+    // return str.slice(-target.length)=== target;
+    //return str.slice(str.length - target.length) === target;
+    //return str.endsWith(target);
+   if(str.slice(-target.length)===target){
+    return true;
+   }else { return false;}
+  }
+  
+  console.log(confirmEnding("Bastian", "n"));
+
+  function repeatStringNumTimes(str, num) {
+    let repeated='';
+  
+    for(let i=0;i<num;i++){
+      repeated+=str;
+    }
+    return repeated; //return repeated=str.repeat(num);
+  }
+  
+  repeatStringNumTimes("abc", 3);
+
+  function truncateString(str, num) {
+    if (str.length > num) {
+     return str.slice(0, num) + "...";
+   } else {
+     return str;
+   }
+ }
+ 
+ truncateString("A-tisket a-tasket A green and yellow basket", 8);
+ truncateString("A-tisket a-tasket A green and yellow basket",
+  "A-tisket a-tasket A green and yellow basket".length); 
+ //should return the string A-tisket a-tasket A green and yellow basket.
+
+ function findElement(arr, func) {
+    let num = 0;
+  
+    for (let i = 0; i < arr.length; i++) {
+      num = arr[i];
+      if (func(num)) {
+        return num;
+      }
+    }
+  
+    return undefined;
+  }
+  
+  findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+  function booWho(bool) {
+    if(bool===true||bool===false){
+      return true;
+    }else return false;
+  }
+  
+  booWho(null);
