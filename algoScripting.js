@@ -203,3 +203,113 @@ function largestOfFour(arr) {
   }
   
   booWho(null);
+
+//   function titleCase(str) {
+//     let word=str.split(' ');
+//     let updatedWord=[];
+//     for(let i=0;i<word.length;i++){
+//       str=word[i][0].toUpperCase()+word[i].slice(1).toLowerCase();
+  
+//     }
+//     return str.join(' ');
+//   }
+  
+//   titleCase("I'm a little tea pot");
+
+function titleCase(str) {
+    const newTitle = str.split(" ");
+    const updatedTitle = [];
+    for (let st in newTitle) {
+      updatedTitle[st] = newTitle[st][0].toUpperCase() + newTitle[st].slice(1).toLowerCase();
+    }
+    return updatedTitle.join(" ");
+  }
+  
+  titleCase("I'm a little tea pot");
+
+  function frankenSplice(arr1, arr2, n) {
+    let copyArr2=arr2.slice();
+    for(let i=0;i<arr1.length;i++){
+      copyArr2.splice(n, 0, arr1[i]);
+      n++;
+    }
+    return copyArr2;
+  }
+  
+  frankenSplice([1, 2, 3], [4, 5, 6], 1);
+  frankenSplice(["claw", "tentacle"], ["head", "shoulders", "knees", "toes"], 2) 
+  //should return ["head", "shoulders", "claw", "tentacle", "knees", "toes"]
+  frankenSplice([1, 2, 3, 4], [], 0) //should return [1, 2, 3, 4].
+
+  function bouncer(arr) {
+    let newArray=[];
+    for(let i=0;i<arr.length;i++){
+      if(arr[i]){
+        newArray.push(arr[i]);
+      }
+    }
+    return newArray;
+  }
+  
+  bouncer([7, "ate", "", false, 9]);
+  bouncer([false, null, 0, NaN, undefined, ""]) //should return []
+
+  function getIndexToIns(arr, num) {
+    // for(let i=0;i<arr.length;i++){
+    //   if(arr[i]>=num){
+    //     return i;
+    //   }
+    // }
+    // return arr.length;
+    arr.sort((a, b) => a - b);
+  
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] >= num) return i;
+    }
+  
+    return arr.length;
+  }
+  
+  getIndexToIns([40, 60], 50);
+  getIndexToIns([5, 3, 20, 3], 5) //should return 2.
+  getIndexToIns([], 1)// should return 0. ???
+
+  function mutation(arr) {
+    const test = arr[1].toLowerCase();
+    const target = arr[0].toLowerCase();
+    for (let i = 0; i < test.length; i++) {
+      if (target.indexOf(test[i]) < 0) return false;
+    }
+    return true;
+  }
+  
+  mutation(["hello", "hey"]);
+  mutation(["zyxwvutsrqponmlkjihgfedcba", "qrstu"]) //should return true.
+  Passed:mutation(["Mary", "Army"]) //should return true.
+  mutation(["Mary", "Aarmy"]) //should return true.
+  mutation(["ate", "date"]) //should return false.
+  
+  function chunkArrayInGroups(arr, size) {
+    let temp = [];
+    const result = [];
+  
+    for (let a = 0; a < arr.length; a++) {
+      if (a % size !== size - 1) temp.push(arr[a]);
+      else {
+        temp.push(arr[a]);
+        result.push(temp);
+        temp = [];
+      }
+    }
+  
+    if (temp.length !== 0) result.push(temp);
+    return result;
+  }
+  
+  chunkArrayInGroups(["a", "b", "c", "d"], 2);
+  //should return [["a", "b"], ["c", "d"]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5], 3) //should return [[0, 1, 2], [3, 4, 5]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2) //should return [[0, 1], [2, 3], [4, 5]].
+  chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4) //should return [[0, 1, 2, 3], [4, 5]].
+  
+  
